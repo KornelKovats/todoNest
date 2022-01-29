@@ -42,7 +42,7 @@ export class TodosService {
     return this.todo;
   }
 
-  async insertTodo(text: string, priority: number, done: boolean) {
+  async insertTodo(text: string, priority: number, done: boolean):Promise<Todo> {
     this.todo = new this.todosModel({
       text,
       priority,

@@ -30,12 +30,12 @@ export class TodosController {
     @Body('priority') todoPriority: number,
     @Body('done') todoDone: boolean,
   ) {
-    const generatedId = await this.todosService.insertTodo(
-      todoText,
-      todoPriority,
-      todoDone,
-    );
-    return { id: generatedId };
+      const insertedTodo = await this.todosService.insertTodo(
+        todoText,
+        todoPriority,
+        todoDone,
+      );
+    return insertedTodo;
   }
 
   @Put(':id')
