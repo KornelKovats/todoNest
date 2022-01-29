@@ -15,11 +15,11 @@ export const TodosSchema = new mongoose.Schema({
   },
   done: {
     type: Boolean,
-    default: null,
+    default: false,
   },
 });
 
-export interface Todo {
+export interface Todo extends mongoose.Document{
   id: string;
   text: string;
   priority: number;
