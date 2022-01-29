@@ -1,7 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-
 import { Todo } from './todos.model';
 
 @Injectable()
@@ -49,8 +48,13 @@ export class TodosService {
       priority,
       done,
     });
-    const result = await this.todo.save();
-    return result.id as string;
+    if (done) {
+      setTimeout(async () => {
+        await this.todosModel.deleteOne({ _id: this.todo.id }).exec();
+      }, 5 * 60 * 1000);
+    }
+    await this.todo.save();
+    return this.getSingleTodo(this.todo.id);
   }
 
   async updateTodo(id: string, text: string, priority: number, done: boolean) {
@@ -64,6 +68,19 @@ export class TodosService {
     if (done) {
       this.todo.done = done;
     }
-    this.todo.save();
+    await this.todo.save();
+    if (done) {
+        setTimeout(async () => {
+          await this.todosModel.deleteOne({ _id: this.todo.id }).exec();
+        }, 10 * 1000);
+      }
+    return this.getSingleTodo(this.todo.id);
+  }
+  async deleteTodo(id: string) {
+    const result = await this.todosModel.deleteOne({ _id: id }).exec();
+    if (result.deletedCount === 0) {
+      throw new NotFoundException('Could not find product.');
+    }
+    return {};
   }
 }
