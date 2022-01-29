@@ -10,8 +10,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
-    "deploy": "npm ci && npm run build && npm run start:prod",
-    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start": "npm ci && npm run build && npm run start:prod",
     "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
