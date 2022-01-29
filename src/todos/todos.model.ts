@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const TodoSchema = new mongoose.Schema({
+export const TodosSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true,
@@ -19,9 +19,9 @@ export const TodoSchema = new mongoose.Schema({
   },
 });
 
-export interface Todos {
-  title: string;
+export interface Todo {
   id: string;
-  description: string;
-  price: number;
+  text: string;
+  priority: number;
+  done: boolean;
 }
