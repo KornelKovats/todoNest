@@ -34,10 +34,10 @@ export class TodosService {
     try {
       this.todo = await this.todosModel.findById(id).exec();
     } catch (error) {
-      throw new NotFoundException('Could not find product.');
+      throw new NotFoundException('Could not find todo.');
     }
     if (!this.todo) {
-      throw new NotFoundException('Could not find product.');
+      throw new NotFoundException('Could not find todo.');
     }
     return this.todo;
   }
@@ -79,7 +79,7 @@ export class TodosService {
   async deleteTodo(id: string) {
     const result = await this.todosModel.deleteOne({ _id: id }).exec();
     if (result.deletedCount === 0) {
-      throw new NotFoundException('Could not find product.');
+      throw new NotFoundException('Could not find todo.');
     }
     return {};
   }

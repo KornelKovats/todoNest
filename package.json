@@ -26,13 +26,14 @@
     "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.2.6",
     "dotenv": "^14.3.2",
+    "mongodb": "^4.3.1",
     "mongoose": "^6.1.6",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^7.5.2"
   },
   "devDependencies": {
-    "@nestjs/testing": "^6.0.0",
+    "@nestjs/testing": "^8.2.6",
     "@types/express": "^4.17.13",
     "@types/jest": "^23.3.13",
     "@types/node": "^17.0.13",
