@@ -45,6 +45,7 @@ describe('TodosService', () => {
             findById: jest.fn(),
             create: jest.fn(),
             exec: jest.fn(),
+            save: jest.fn(),
           },
         },
       ],
@@ -95,8 +96,8 @@ describe('TodosService', () => {
 
   it('#getSingleTodo | throw error while mocking results', async () => {
     jest.spyOn(model, 'findById').mockReturnValue({
-        exec: jest.fn().mockRejectedValue(new Error()),
-      } as any);
+      exec: jest.fn().mockRejectedValue(new Error()),
+    } as any);
     try {
       await service.getSingleTodo('999');
     } catch (error) {

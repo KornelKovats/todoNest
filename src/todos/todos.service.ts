@@ -72,7 +72,7 @@ export class TodosService {
     if (done) {
         setTimeout(async () => {
           await this.todosModel.deleteOne({ _id: this.todo.id }).exec();
-        }, 10 * 1000);
+        }, 5 * 60 * 1000);
       }
     return this.getSingleTodo(this.todo.id);
   }
